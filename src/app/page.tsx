@@ -4,14 +4,15 @@ import { Button } from "./components/ui/Button"
 import { CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card"
 import { Input } from "./components/ui/input"
 import { Textarea } from "./components/ui/textarea"
-import { Code, Github, Image as ImageIcon, Linkedin, Mail, Send, FileText } from "lucide-react"
+import { Code, Github, Image as  Linkedin, Mail, Send, FileText } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
+
 import { Card } from "./components/ui/card"
 import { motion, useScroll, useTransform, useAnimation } from "framer-motion"
-import { useEffect, useRef } from "react"
+import { useEffect } from "react"
 
 const StarryBackground = () => {
+
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
       <div className="absolute inset-0">
@@ -25,6 +26,7 @@ const StarryBackground = () => {
               r={Math.random() * 2}
               fill="#fff"
               fillOpacity={Math.random() * 0.5 + 0.25}
+              
             >
               <animate
                 attributeName="opacity"
@@ -32,6 +34,7 @@ const StarryBackground = () => {
                 dur={`${Math.random() * 3 + 2}s`}
                 repeatCount="indefinite"
                 begin={`${Math.random() * 3}s`}
+                
               />
             </circle>
           ))}
@@ -57,7 +60,7 @@ const ShootingStar = () => {
 
 export default function Portfolio() {
   const { scrollYProgress } = useScroll()
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1])
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
   const controls = useAnimation()
 
   useEffect(() => {
@@ -80,6 +83,7 @@ export default function Portfolio() {
           initial={{ y: -100 }}
           animate={{ y: 0 }}
           transition={{ type: "spring", stiffness: 100 }}
+          style={{opacity}}
         >
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <Link href="/" className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
@@ -110,6 +114,7 @@ export default function Portfolio() {
             className="py-20 text-center"
             initial={{ opacity: 0, y: 50 }}
             animate={controls}
+            style={{opacity}}
           >
             <motion.h1 
               className="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
@@ -149,7 +154,7 @@ export default function Portfolio() {
             <div className="container mx-auto px-4">
               <h2 className="text-3xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">About Me</h2>
               <p className="max-w-2xl mx-auto text-center text-purple-200">
-                I'm a cosmic code craftsman, adept at solving complex problems and embracing challenges. With a passion for web development as vast as the universe itself, I weave digital constellations with every line of code. My mission is to create seamless user experiences that are not only functional but truly out of this world. Driven by curiosity and a love for tackling tough problems, I thrive on pushing boundaries and innovating. Let's explore the infinite possibilities of technology together and make the digital cosmos shine even brighter.
+                I am a cosmic code craftsman, adept at solving complex problems and embracing challenges. With a passion for web development as vast as the universe itself, I weave digital constellations with every line of code. My mission is to create seamless user experiences that are not only functional but truly out of this world. Driven by curiosity and a love for tackling tough problems, I thrive on pushing boundaries and innovating. Let us explore the infinite possibilities of technology together and make the digital cosmos shine even brighter.
               </p>
             </div>
           </motion.section>
@@ -298,7 +303,7 @@ export default function Portfolio() {
   )
 }
 
-function ProjectCard({ title, description, link }: any) {
+function ProjectCard({ title, description, link }: ProjectCardProps) {
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
@@ -321,7 +326,7 @@ function ProjectCard({ title, description, link }: any) {
   )
 }
 
-function TechBadge({ name }: any) {
+function TechBadge({ name }: TechBadgeProps) {
   return (
     <motion.div
       className="group relative"
@@ -341,4 +346,14 @@ function TechBadge({ name }: any) {
     </motion.div>
     </motion.div>
   )
+}
+
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  link: string;
+}
+
+interface TechBadgeProps {
+  name: string;
 }
