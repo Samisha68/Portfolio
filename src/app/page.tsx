@@ -87,7 +87,7 @@ export default function Portfolio() {
         >
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <Link href="/" className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-              HELLLLOOOOO!!
+              HEY!
             </Link>
             <nav className="space-x-4">
               <Link href="#about" className="hover:text-purple-400 transition-colors">
@@ -97,7 +97,7 @@ export default function Portfolio() {
                 Projects
               </Link>
               <Link href="#tech-stack" className="hover:text-purple-400 transition-colors">
-                Tech Stack
+                Tech-Stack
               </Link>
               <Link href="#resume" className="hover:text-purple-400 transition-colors">
                 Resume
