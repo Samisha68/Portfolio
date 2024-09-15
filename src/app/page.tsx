@@ -4,7 +4,8 @@ import { Button } from "./components/ui/Button"
 import { CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card"
 import { Input } from "./components/ui/input"
 import { Textarea } from "./components/ui/textarea"
-import { Code, Github, Linkedin as  Linkedin, Mail, Send, FileText } from "lucide-react"
+import { Code, Github as Mail, Send, FileText } from "lucide-react";
+import {Linkedin as LinkedinIcon } from "lucide-react";
 import Link from "next/link"
 import Contact from "./components/ui/Contact"
 import { Card } from "./components/ui/card"
@@ -87,7 +88,7 @@ export default function Portfolio() {
         >
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <Link href="/" className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-              HELLLLOOOOO!!
+              HEY!
             </Link>
             <nav className="space-x-4">
               <Link href="#about" className="hover:text-purple-400 transition-colors">
@@ -97,7 +98,7 @@ export default function Portfolio() {
                 Projects
               </Link>
               <Link href="#tech-stack" className="hover:text-purple-400 transition-colors">
-                Tech Stack
+                Tech-Stack
               </Link>
               <Link href="#resume" className="hover:text-purple-400 transition-colors">
                 Resume
@@ -178,7 +179,7 @@ export default function Portfolio() {
                 <ProjectCard
                   title="Payment-Application"
                   description="In a stellar display of full-stack prowess, I crafted a Secure Payment Platform using React.js, Express.js, MongoDB, and Tailwind CSS. This interstellar application prioritizes security with robust user authentication and seamless transaction management. The user experience shines through an intuitive dashboard designed for effortless transaction processing, making each financial journey smooth and secure. From the ground up, every element is meticulously engineered to provide a stellar blend of functionality and elegance, ensuring that users traverse their financial tasks with cosmic ease and confidence."
-                  link="https://github.com/Samisha68/100x_dev_cohort2/tree/main/paytm-main"
+                  link="https://github.com/Samisha68/PayPro/tree/main"
                 />
                 <ProjectCard
                   title="Muzer"
@@ -269,7 +270,7 @@ export default function Portfolio() {
                 </Button>
                 <Button variant="outline" size="icon" className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white" asChild>
                   <Link href="https://www.linkedin.com/in/samisha-063b96223/">
-                    <Linkedin className="h-5 w-5" />
+                    <LinkedinIcon className="h-5 w-5" />
                     <span className="sr-only">LinkedIn</span>
                   </Link>
                 </Button>
