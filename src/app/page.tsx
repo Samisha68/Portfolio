@@ -178,7 +178,7 @@ export default function Portfolio() {
                 <ProjectCard
                   title="Payment-Application"
                   description="In a stellar display of full-stack prowess, I crafted a Secure Payment Platform using React.js, Express.js, MongoDB, and Tailwind CSS. This interstellar application prioritizes security with robust user authentication and seamless transaction management. The user experience shines through an intuitive dashboard designed for effortless transaction processing, making each financial journey smooth and secure. From the ground up, every element is meticulously engineered to provide a stellar blend of functionality and elegance, ensuring that users traverse their financial tasks with cosmic ease and confidence."
-                  link="https://github.com/Samisha68/100x_dev_cohort2/tree/main/paytm-main"
+                  link="https://github.com/Samisha68/PayPro/tree/main"
                 />
                 <ProjectCard
                   title="Muzer"
