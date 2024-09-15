@@ -4,7 +4,8 @@ import { Button } from "./components/ui/Button"
 import { CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card"
 import { Input } from "./components/ui/input"
 import { Textarea } from "./components/ui/textarea"
-import { Code, Github, Linkedin as  LinkedinIcon, Mail, Send, FileText } from "lucide-react"
+import { Code, Github as Mail, Send, FileText } from "lucide-react";
+import {Linkedin as LinkedinIcon } from "lucide-react";
 import Link from "next/link"
 
 import { Card } from "./components/ui/card"
