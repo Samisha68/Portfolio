@@ -4,7 +4,7 @@ import { Button } from "./components/ui/Button"
 import { CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card"
 import { Input } from "./components/ui/input"
 import { Textarea } from "./components/ui/textarea"
-import { Code, Github, Image as  Linkedin, Mail, Send, FileText } from "lucide-react"
+import { Code, Github, Linkedin as  LinkedinIcon, Mail, Send, FileText } from "lucide-react"
 import Link from "next/link"
 
 import { Card } from "./components/ui/card"
@@ -278,7 +278,7 @@ export default function Portfolio() {
                 </Button>
                 <Button variant="outline" size="icon" className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white" asChild>
                   <Link href="https://www.linkedin.com/in/samisha-063b96223/">
-                    <Linkedin className="h-5 w-5" />
+                    <LinkedinIcon className="h-5 w-5" />
                     <span className="sr-only">LinkedIn</span>
                   </Link>
                 </Button>
