@@ -4,9 +4,9 @@ import { Button } from "./components/ui/Button"
 import { CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card"
 import { Input } from "./components/ui/input"
 import { Textarea } from "./components/ui/textarea"
-import { Code, Github, Image as  Linkedin, Mail, Send, FileText } from "lucide-react"
+import { Code, Github, Linkedin as  Linkedin, Mail, Send, FileText } from "lucide-react"
 import Link from "next/link"
-
+import Contact from "./components/ui/Contact"
 import { Card } from "./components/ui/card"
 import { motion, useScroll, useTransform, useAnimation } from "framer-motion"
 import { useEffect } from "react"
@@ -257,17 +257,8 @@ export default function Portfolio() {
             viewport={{ once: true }}
           >
             <div className="container mx-auto px-4">
-              <h2 className="text-3xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Contact the Cosmos</h2>
               <div className="max-w-md mx-auto">
-                <form className="space-y-4">
-                  <Input placeholder="Your Name" className="bg-[#1a1b3e] border-purple-500 text-white placeholder-purple-300" />
-                  <Input type="email" placeholder="Your Email" className="bg-[#1a1b3e] border-purple-500 text-white placeholder-purple-300" />
-                  <Textarea placeholder="Your Message" className="bg-[#1a1b3e] border-purple-500 text-white placeholder-purple-300" />
-                  <Button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white">
-                    Send Transmission
-                    <Send className="ml-2 h-4 w-4" />
-                  </Button>
-                </form>
+                <Contact/>
               </div>
               <div className="mt-8 flex justify-center space-x-4">
                 <Button variant="outline" size="icon" className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white" asChild>
@@ -302,7 +293,6 @@ export default function Portfolio() {
     </div>
   )
 }
-
 function ProjectCard({ title, description, link }: ProjectCardProps) {
   return (
     <motion.div
