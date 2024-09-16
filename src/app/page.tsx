@@ -184,12 +184,12 @@ export default function Portfolio() {
                 <ProjectCard
                   title="Muzer"
                   description="In the boundless expanse of my development universe, I crafted Muzer, a celestial music platform that harmoniously blends the MERN stack into a symphony of real-time song requests and curated playlists. As the maestro of secure authentication, I wielded next-auth to ensure role-based access, creating a secure galaxy for user interactions. The visual cosmos of *Muzer* shines through with Tailwind CSS, offering a responsive and seamless experience that adapts gracefully across every device. This project exemplifies my ability to conjure stellar solutions and navigate the digital stars with precision and creativity."
-                  link="https://github.com/Samisha68/Muzer2"
+                  link="https://github.com/Samisha68/Muzer"
                 />
                 <ProjectCard
                   title="Portfolio"
                   description="Dive into my portfolio website, crafted with the dynamic duo of Next.js and Tailwind CSS. This sleek and responsive digital showcase not only highlights my projects but also offers an immersive, user-friendly experience. With Next.js powering seamless navigation and Tailwind CSS adding a touch of modern design elegance, every interaction is smooth and visually captivating. Explore a universe of my work, where each click reveals a new facet of my skills and creativity, all wrapped in a beautifully cohesive design."
-                  link=""
+                  link="https://portfolio-samisha-git-main-samisha68s-projects.vercel.app/"
                 />
                 <ProjectCard
                   title="ASE-CLUB"
