@@ -1,350 +1,489 @@
-"use client"
+"use client";
+import React, { useState, useEffect } from "react";
 
-import { Button } from "./components/ui/Button"
-import { CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card"
-import { Input } from "./components/ui/input"
-import { Textarea } from "./components/ui/textarea"
-import { Code, Github , Mail, FileText } from "lucide-react";
-import {Linkedin as LinkedinIcon } from "lucide-react";
-import Link from "next/link"
-import Contact from "./components/ui/Contact"
-import { Card } from "./components/ui/card"
-import { motion, useScroll, useTransform, useAnimation } from "framer-motion"
-import { useEffect } from "react"
+import { Github, Linkedin, Mail, Download, ExternalLink } from "lucide-react";
 
-const StarryBackground = () => {
-
-  return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none">
-      <div className="absolute inset-0">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <rect width="100%" height="100%" fill="#0a0b1e"/>
-          {[...Array(100)].map((_, i) => (
-            <circle
-              key={i}
-              cx={`${Math.random() * 100}%`}
-              cy={`${Math.random() * 100}%`}
-              r={Math.random() * 2}
-              fill="#fff"
-              fillOpacity={Math.random() * 0.5 + 0.25}
-              
-            >
-              <animate
-                attributeName="opacity"
-                values="0;1;0"
-                dur={`${Math.random() * 3 + 2}s`}
-                repeatCount="indefinite"
-                begin={`${Math.random() * 3}s`}
-                
-              />
-            </circle>
-          ))}
-        </svg>
-      </div>
-    </div>
-  )
-}
-
-const ShootingStar = () => {
-  const randomDelay = Math.random() * 15
-  return (
-    <div 
-      className="absolute w-0.5 h-0.5 bg-white rounded-full"
-      style={{
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-        animation: `shootingStarAnimation 2s linear ${randomDelay}s infinite`
-      }}
-    />
-  )
-}
-
-export default function Portfolio() {
-  const { scrollYProgress } = useScroll()
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
-  const controls = useAnimation()
+const Portfolio = () => {
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  const [, setScrollY] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    controls.start({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8 }
-    })
-  }, [controls])
+    setIsVisible(true);
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  return (
-    <div className="min-h-screen bg-[#0a0b1e] text-white overflow-hidden">
-      <StarryBackground />
-      {[...Array(5)].map((_, i) => (
-        <ShootingStar key={i} />
-      ))}
-      <div className="relative">
-        <motion.header 
-          className="sticky top-0 z-10 backdrop-blur-sm bg-[#0a0b1e]/80 border-b border-white/10"
-          initial={{ y: -100 }}
-          animate={{ y: 0 }}
-          transition={{ type: "spring", stiffness: 100 }}
-          style={{opacity}}
-        >
-          <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-            <Link href="/" className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-              HEY!
-            </Link>
-            <nav className="space-x-4">
-              <Link href="#about" className="hover:text-purple-400 transition-colors">
-                About
-              </Link>
-              <Link href="#projects" className="hover:text-purple-400 transition-colors">
-                Projects
-              </Link>
-              <Link href="#tech-stack" className="hover:text-purple-400 transition-colors">
-                Tech-Stack
-              </Link>
-              <Link href="#resume" className="hover:text-purple-400 transition-colors">
-                Resume
-              </Link>
-              <Link href="#contact" className="hover:text-purple-400 transition-colors">
-                Contact
-              </Link>
-            </nav>
-          </div>
-        </motion.header>
-
-        <main>
-          <motion.section 
-            className="py-20 text-center"
-            initial={{ opacity: 0, y: 50 }}
-            animate={controls}
-            style={{opacity}}
-          >
-            <motion.h1 
-              className="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Samisha
-            </motion.h1>
-            <motion.p 
-              className="text-xl text-purple-200 mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              Full Stack Developer
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-            >
-              <Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white">
-                <Link href="#projects">Explore My Universe</Link>
-              </Button>
-            </motion.div>
-          </motion.section>
-
-          <motion.section 
-            id="about" 
-            className="py-20 bg-[#0a0b1e]/50"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="container mx-auto px-4">
-              <h2 className="text-3xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">About Me</h2>
-              <p className="max-w-2xl mx-auto text-center text-purple-200">
-                I am a cosmic code craftsman, adept at solving complex problems and embracing challenges. With a passion for web development as vast as the universe itself, I weave digital constellations with every line of code. My mission is to create seamless user experiences that are not only functional but truly out of this world. Driven by curiosity and a love for tackling tough problems, I thrive on pushing boundaries and innovating. Let us explore the infinite possibilities of technology together and make the digital cosmos shine even brighter.
-              </p>
-            </div>
-          </motion.section>
-
-          <motion.section 
-            id="projects" 
-            className="py-20"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="container mx-auto px-4">
-              <h2 className="text-3xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Stellar Projects</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <ProjectCard
-                  title="University-Website"
-                  description=" I embarked on a journey through the digital cosmos to create a University Website that bridges the gap between functionality and elegance. By harnessing the power of HTML and CSS, I designed a user-centric dashboard that caters to students, faculty, and administrators alike. This project seamlessly blends usability with visual appeal, ensuring that every interaction is both intuitive and aesthetically pleasing. The result is a comprehensive, engaging website that stands as a beacon of efficiency and style in the vast universe of web development."
-                  link="https://university-website-nmit.vercel.app/"
-                />
-                <ProjectCard
-                  title="Payment-Application"
-                  description="In a stellar display of full-stack prowess, I crafted a Secure Payment Platform using React.js, Express.js, MongoDB, and Tailwind CSS. This interstellar application prioritizes security with robust user authentication and seamless transaction management. The user experience shines through an intuitive dashboard designed for effortless transaction processing, making each financial journey smooth and secure. From the ground up, every element is meticulously engineered to provide a stellar blend of functionality and elegance, ensuring that users traverse their financial tasks with cosmic ease and confidence."
-                  link="https://github.com/Samisha68/PayPro/tree/main"
-                />
-                <ProjectCard
-                  title="Muzer"
-                  description="In the boundless expanse of my development universe, I crafted Muzer, a celestial music platform that harmoniously blends the MERN stack into a symphony of real-time song requests and curated playlists. As the maestro of secure authentication, I wielded next-auth to ensure role-based access, creating a secure galaxy for user interactions. The visual cosmos of *Muzer* shines through with Tailwind CSS, offering a responsive and seamless experience that adapts gracefully across every device. This project exemplifies my ability to conjure stellar solutions and navigate the digital stars with precision and creativity."
-                  link="https://github.com/Samisha68/Muzer"
-                />
-                <ProjectCard
-                  title="Portfolio"
-                  description="Dive into my portfolio website, crafted with the dynamic duo of Next.js and Tailwind CSS. This sleek and responsive digital showcase not only highlights my projects but also offers an immersive, user-friendly experience. With Next.js powering seamless navigation and Tailwind CSS adding a touch of modern design elegance, every interaction is smooth and visually captivating. Explore a universe of my work, where each click reveals a new facet of my skills and creativity, all wrapped in a beautifully cohesive design."
-                  link="https://portfolio-samisha-git-main-samisha68s-projects.vercel.app/"
-                />
-                <ProjectCard
-                  title="ASE-CLUB"
-                  description="Embark on a journey through my full-stack project, where the MERN stack meets a sleek design crafted in Figma, HTML, and CSS. This web application is designed to revolutionize community engagement, fostering vibrant student interaction and streamlined activities. With JavaScript libraries ensuring a fluid and responsive user experience, the platform facilitates effortless event enrollment, intuitive member profile management, and lively community forum discussions. Dive into a space where technology enhances connectivity and participation, all wrapped in a user-centric and visually compelling interface."
-                  link="Coming Sooon!!"
-                />
-              </div>
-            </div>
-          </motion.section>
-
-          <motion.section 
-            id="tech-stack" 
-            className="py-20 bg-[#0a0b1e]/50"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="container mx-auto px-4 ">
-              <h2 className="text-3xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Galactic Tech Stack</h2>
-              <div className="flex flex-wrap justify-center gap-4">
-                <TechBadge name="React" />
-                <TechBadge name="Next.js" />
-                <TechBadge name="TypeScript" />
-                <TechBadge name="Node.js" />
-                <TechBadge name="Express" />
-                <TechBadge name="MongoDB" />
-                <TechBadge name="PostgreSQL" />
-                <TechBadge name="Tailwind CSS" />
-                <TechBadge name="Git" />
-                <TechBadge name="Java" />
-                <TechBadge name="Python" />
-                <TechBadge name="SQL" />
-                <TechBadge name="Javascript" />
-              </div>
-            </div>
-          </motion.section>
-
-          <motion.section 
-            id="resume" 
-            className="py-20"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="container mx-auto px-4">
-              <h2 className="text-3xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">My Cosmic Resume</h2>
-              <div className="flex justify-center">
-                <Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white">
-                  <FileText className="mr-2 h-4 w-4" />
-                  <Link href="https://resume-samisha.tiiny.site" target="_blank" rel="noopener noreferrer">
-                    Download Resume
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </motion.section>
-
-          <motion.section 
-            id="contact" 
-            className="py-20 bg-[#0a0b1e]/50"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="container mx-auto px-4">
-              <div className="max-w-md mx-auto">
-                <Contact/>
-              </div>
-              <div className="mt-8 flex justify-center space-x-4">
-                <Button variant="outline" size="icon" className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white" asChild>
-                  <Link href="https://github.com/Samisha68">
-                    <Github className="h-5 w-5" />
-                    <span className="sr-only">GitHub</span>
-                  </Link>
-                </Button>
-                <Button variant="outline" size="icon" className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white" asChild>
-                  <Link href="https://www.linkedin.com/in/samisha-063b96223/">
-                    <LinkedinIcon className="h-5 w-5" />
-                    <span className="sr-only">LinkedIn</span>
-                  </Link>
-                </Button>
-                <Button variant="outline" size="icon" className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white" asChild>
-                  <Link href="mailto:samishaofficial68@gmail.com">
-                    <Mail className="h-5 w-5" />
-                    <span className="sr-only">Email</span>
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </motion.section>
-        </main>
-
-        <footer className="bg-[#0a0b1e] py-6 text-center border-t border-white/10">
-          <p className="text-sm text-purple-200">
-            © {new Date().getFullYear()} Samisha. All rights reserved across the universe.
-          </p>
-        </footer>
+  // SVG for particle animation background
+  const ParticleBackground = () => (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 opacity-30">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              width: Math.random() * 5 + 2 + "px",
+              height: Math.random() * 5 + 2 + "px",
+              left: Math.random() * 100 + "%",
+              top: Math.random() * 100 + "%",
+              background: "linear-gradient(45deg, #00fff7, #00ff95)",
+              animation: `float ${Math.random() * 10 + 10}s linear infinite`,
+              opacity: Math.random() * 0.5 + 0.3,
+            }}
+          />
+        ))}
       </div>
     </div>
-  )
-}
-function ProjectCard({ title, description, link }: ProjectCardProps) {
+  );
+
   return (
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <Card className="bg-[#1a1b3e] border-purple-500 hover:border-pink-500 transition-colors">
-        <CardHeader>
-          <CardTitle className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">{title}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <CardDescription className="text-purple-200">{description}</CardDescription>
-          <Button variant="outline" className="mt-4 border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white" asChild>
-            <Link href={link}>
-              Have a Look!
-            </Link>
-          </Button>
-        </CardContent>
-      </Card>
-    </motion.div>
-  )
-}
+    <div className="min-h-screen bg-[#0a1020] text-white relative">
+      <style jsx global>{`
+        @keyframes float {
+          0% {
+            transform: translate(0, 0);
+          }
+          50% {
+            transform: translate(20px, 20px);
+          }
+          100% {
+            transform: translate(0, 0);
+          }
+        }
 
-function TechBadge({ name }: TechBadgeProps) {
-  return (
-    <motion.div
-      className="group relative"
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"></div>
-      <div className="relative bg-[#1a1b3e] text-purple-300 rounded-full px-3 py-1 text-sm font-medium border border-purple-500 transition-all duration-300 group-hover:border-pink-500 group-hover:text-white">
-        <Code className="inline-block mr-1 h-4 w-4" />
-        {name}
-      </div>
-      <motion.div
-      className="group relative tech-badge" // Add tech-badge class here
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-    >
-    </motion.div>
-    </motion.div>
-  )
-}
+        .animate-slide-up {
+          animation: slideUp 0.8s ease-out forwards;
+        }
 
-interface ProjectCardProps {
-  title: string;
-  description: string;
-  link: string;
-}
+        @keyframes slideUp {
+          from {
+            transform: translateY(50px);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        
+        @keyframes typing {
+          from { width: 0; }
+          to { width: 100%; }
+        }
 
-interface TechBadgeProps {
-  name: string;
-}
+        @keyframes slide-right {
+          from { width: 0; }
+          to { width: 6rem; }
+        }
+
+        @keyframes drop-bounce {
+          0% { transform: translateY(-100vh); }
+          75% { transform: translateY(10px); }
+          90% { transform: translateY(-5px); }
+          100% { transform: translateY(0); }
+        }
+
+        @keyframes drop-text {
+          0% { transform: translateY(-50px); opacity: 0; }
+          100% { transform: translateY(0); opacity: 1; }
+        }
+
+        .animate-typing-1 {
+          width: 0;
+          border-right: 2px solid #00fff7;
+          animation: typing 1s steps(20, end) forwards;
+        }
+
+        .animate-typing-2 {
+          width: 0;
+          border-right: 2px solid #00fff7;
+          animation: typing 1.5s steps(40, end) 1s forwards;
+        }
+
+        .animate-slide-right {
+          width: 0;
+          animation: slide-right 0.8s ease-out 2.5s forwards;
+        }
+
+        .animate-drop-text-1 {
+          opacity: 0;
+          animation: drop-text 0.5s ease-out 3s forwards;
+        }
+
+        .animate-drop-text-2 {
+          opacity: 0;
+          animation: drop-text 0.5s ease-out 3.3s forwards;
+        }
+
+        .animate-drop-text-3 {
+          opacity: 0;
+          animation: drop-text 0.5s ease-out 3.6s forwards;
+        }
+
+        .animate-drop-bounce {
+          animation: drop-bounce 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+        }
+
+        .animate-drop-bounce-delay-1 {
+          animation: drop-bounce 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s infinite;
+        }
+
+        .animate-drop-bounce-delay-2 {
+          animation: drop-bounce 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s infinite;
+        }
+
+        @keyframes pulse {
+          0%, 100% { opacity: 0.1; }
+          50% { opacity: 0.3; }
+        }
+
+        .animate-pulse {
+          animation: pulse 2s ease-in-out infinite;
+        }
+      `}</style>
+
+      <ParticleBackground />
+
+      {/* Header */}
+      <header className="fixed w-full top-0 z-50 bg-[#0a1020]/80 backdrop-blur-sm border-b border-[#1e2a4a]">
+        <nav className="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+          <h1 className="text-xl font-light tracking-wider">
+            <span className="text-[#00fff7]">SAMISHA</span>
+            <span className="text-[#00ff95]">.DEV</span>
+          </h1>
+          <div className="space-x-8">
+            <a href="#experience" className="text-sm hover:text-[#00fff7] transition-colors">
+              Experience
+            </a>
+            <a href="#projects" className="text-sm hover:text-[#00fff7] transition-colors">
+              Projects
+            </a>
+            <a href="#tech-stack" className="text-sm hover:text-[#00fff7] transition-colors">
+              Tech Stack
+            </a>
+            <a href="#contact" className="text-sm hover:text-[#00fff7] transition-colors">
+              Contact
+            </a>
+          </div>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section className="min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 w-full">
+          <div
+            className={`space-y-6 transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
+            <div className="typewriter-container">
+              <p className="text-[#00fff7] text-sm tracking-wider animate-typing-1 overflow-hidden whitespace-nowrap">$ whoami</p>
+              <h2 className="text-6xl font-bold tracking-tight mt-4">
+                <span className="inline-block animate-typing-2 overflow-hidden whitespace-nowrap">Samisha</span>
+              </h2>
+            </div>
+            <div className="h-1 w-24 bg-gradient-to-r from-[#00fff7] to-[#00ff95] animate-slide-right mt-6"></div>
+            <div className="space-y-3 mt-6">
+              <p className="text-xl text-gray-400 max-w-2xl typing-text-container overflow-hidden">
+                <span className="inline-block animate-drop-text-1">{">"} Just your friendly neighborhood code wizard 🧙‍♂️</span>
+              </p>
+              <p className="text-xl text-gray-400 max-w-2xl typing-text-container overflow-hidden">
+                <span className="inline-block animate-drop-text-2">{">"} Turning chai into code since 2024 ☕️</span>
+              </p>
+              <p className="text-xl text-gray-400 max-w-2xl typing-text-container overflow-hidden">
+                <span className="inline-block animate-drop-text-3">{">"} Building digital experiences that make people go &quot;Wow&quot; ✨</span>
+              </p>
+            </div>
+            <div className="absolute right-0 top-0 w-1/3 h-full">
+              <div className="relative h-full">
+                <div className="absolute right-20 top-32 w-20 h-20 rounded-full bg-gradient-to-r from-[#00fff7] to-[#00ff95] opacity-20 animate-drop-bounce"></div>
+                <div className="absolute right-40 top-48 w-16 h-16 rounded-full bg-gradient-to-r from-[#00fff7] to-[#00ff95] opacity-15 animate-drop-bounce-delay-1"></div>
+                <div className="absolute right-16 top-64 w-12 h-12 rounded-full bg-gradient-to-r from-[#00fff7] to-[#00ff95] opacity-10 animate-drop-bounce-delay-2"></div>
+                <div className="h-full w-1 bg-gradient-to-b from-[#00fff7] to-transparent absolute right-32 top-0 animate-pulse"></div>
+              </div>
+            </div>
+            <button
+              onClick={() => setIsResumeModalOpen(true)}
+              className="px-8 py-3 bg-gradient-to-r from-[#00fff7] to-[#00ff95] text-black font-medium rounded hover:opacity-90 transition-opacity"
+            >
+              View Resume
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack */}
+      <section id="tech-stack" className="py-20 relative">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-12">
+            <span className="text-[#00fff7]">Tech</span> Stack
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              
+              "JavaScript",
+              "React",
+              "Node.js",
+              "Express.js",
+              "MongoDB",
+              "PostgreSQL",
+              "Git/GitHub",
+              "Tailwind CSS",
+              "TypeScript",
+              "Next.js",
+            ].map((tech, index) => (
+              <div
+                key={index}
+                className="p-6 bg-[#1e2a4a] rounded-lg border border-[#2a3a6a] hover:border-[#00fff7] transition-colors group"
+              >
+                <span className="text-gray-300 group-hover:text-[#00fff7] transition-colors">{tech}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Experience */}
+      <section id="experience" className="py-20 relative">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-12">
+            <span className="text-[#00fff7]">Work</span> Experience
+          </h2>
+          <div className="space-y-8">
+            <div className="p-8 bg-[#1e2a4a] rounded-lg border border-[#2a3a6a] hover:border-[#00fff7] transition-all group">
+              <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                <h3 className="text-xl font-medium group-hover:text-[#00fff7] transition-colors">Frontend Developer</h3>
+                <p className="text-gray-400">October 2024- December 2024</p>
+              </div>
+              <p className="text-[#00fff7] mb-4">UpsurgeLabs Pvt. Ltd.</p>
+              <p className="text-gray-300 leading-relaxed">
+              Collaborated on the development of an innovative browser task automation tool named Cosmo AI, designed to simplify and streamline repetitive tasks with advanced AI capabilities.
+              </p>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="py-20 relative">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-12">
+            <span className="text-[#00fff7]">Featured</span> Projects
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="group p-8 bg-[#1e2a4a] rounded-lg border border-[#2a3a6a] hover:border-[#00fff7] transition-all">
+              <h3 className="text-xl font-medium mb-4 group-hover:text-[#00fff7] transition-colors">EnergyPro⚡</h3>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+              Built EnergyPro🌞💡—a platform that makes trading solar power  as simple as a few clicks! Using $Bijlee Tokens, users can sell and buy solar energy seamlessly. Integrated with Solana 🔗 wallet, it&#34;s fast, secure, and live with a stunning, responsive design.
+              </p>
+              <div className="flex items-center space-x-4">
+                <a
+                  href="https://github.com/Samisha68/Energypro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
+                >
+                  <Github size={16} />
+                  <span>View Code</span>
+                </a>
+                <a
+                  href=""
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
+                >
+                  <ExternalLink size={16} />
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+            <div className="group p-8 bg-[#1e2a4a] rounded-lg border border-[#2a3a6a] hover:border-[#00fff7] transition-all">
+              <h3 className="text-xl font-medium mb-4 group-hover:text-[#00fff7] transition-colors">CryptoCustodian Chatbot 🤖</h3>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+              CryptoCustodian is an innovative Telegram bot developed using Python, Solana API, and Telegram Bot API. This project integrates speech-to-text functionality, enabling users to perform blockchain transactions like Solana token minting and balance checking through voice commands.🎤
+              </p>
+              <div className="flex items-center space-x-4">
+                <a
+                  href="https://github.com/Samisha68/CryptoCustodian"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
+                >
+                  <Github size={16} />
+                  <span>View Code</span>
+                </a>
+                <a
+                  href="https://web.telegram.org/a/#8173959167"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
+                >
+                  <ExternalLink size={16} />
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+            <div className="group p-8 bg-[#1e2a4a] rounded-lg border border-[#2a3a6a] hover:border-[#00fff7] transition-all">
+              <h3 className="text-xl font-medium mb-4 group-hover:text-[#00fff7] transition-colors">PayPro 💸</h3>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+              PayPro is a secure payment web application built using React.js, Express.js, MongoDB, and Tailwind CSS. It features robust user authentication, account management, and seamless transaction handling to ensure a safe and smooth user experience. The platform includes an intuitive, user-centric dashboard that simplifies transaction tracking and processing.
+              </p>
+              <div className="flex items-center space-x-4">
+                <a
+                  href="https://github.com/Samisha68/PayPro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
+                >
+                  <Github size={16} />
+                  <span>View Code</span>
+                </a>
+                <a
+                  href="https://github.com/Samisha68/PayPro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
+                >
+                  <ExternalLink size={16} />
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div><div className="group p-8 bg-[#1e2a4a] rounded-lg border border-[#2a3a6a] hover:border-[#00fff7] transition-all">
+              <h3 className="text-xl font-medium mb-4 group-hover:text-[#00fff7] transition-colors">University Website🎓 </h3>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+              Designed and developed a comprehensive university website using HTML and CSS, focusing on user-friendly interfaces for students, faculty, and administrators. The project emphasized usability and aesthetics, delivering a visually appealing and fully functional dashboard that caters to diverse user needs.
+              </p>
+              <div className="flex items-center space-x-4">
+                <a
+                  href="https://github.com/Samisha68/University-Website"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
+                >
+                  <Github size={16} />
+                  <span>View Code</span>
+                </a>
+                <a
+                  href="https://university-website-nmit.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
+                >
+                  <ExternalLink size={16} />
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-20 relative">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl font-bold mb-12">
+            <span className="text-[#00fff7]">Get in</span> Touch
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a
+              href="samishaofficial68@gmail.com"
+              className="p-8 bg-[#1e2a4a] rounded-lg border border-[#2a3a6a] hover:border-[#00fff7] transition-all group flex flex-col items-center justify-center text-center"
+            >
+              <div className="flex items-center space-x-2">
+                <Mail size={16} className="text-[#00fff7]" />
+                <span className="text-gray-400 hover:text-[#00fff7] transition-colors">samishaofficial68@gmail.com</span>
+              </div>
+            </a>
+            <a
+              href="https://github.com/Samisha68"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-8 bg-[#1e2a4a] rounded-lg border border-[#2a3a6a] hover:border-[#00fff7] transition-all group flex items-center space-x-2"
+            >
+              <Github size={16} className="text-[#00fff7]" />
+              <span className="text-gray-400 group-hover:text-[#00fff7] transition-colors">@Samisha68</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/samisha-063b96223/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-8 bg-[#1e2a4a] rounded-lg border border-[#2a3a6a] hover:border-[#00fff7] transition-all group flex items-center space-x-2"
+            >
+              <Linkedin size={16} className="text-[#00fff7]" />
+              <span className="text-gray-400 group-hover:text-[#00fff7] transition-colors">/in/Samisha</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Resume Modal */}
+      {isResumeModalOpen && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-[#1e2a4a] rounded-lg max-w-2xl w-full p-8">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-2xl font-bold">Resume</h3>
+              <button
+                onClick={() => setIsResumeModalOpen(false)}
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="prose prose-invert max-w-none">
+              <div className="mb-8">
+                <h4 className="text-xl font-medium mb-4">Summary</h4>
+                <p className="text-gray-300">
+                  Full Stack Developer with an year of experience.
+                </p>
+              </div>
+              
+              <div className="mb-8">
+                <h4 className="text-xl font-medium mb-4">Skills</h4>
+                <ul className="text-gray-300 space-y-2">
+                  <li>Frontend: React, Next.js, TypeScript, Tailwind CSS</li>
+                  <li>Backend: Node.js, Express, Python</li>
+                  <li>Database: PostgreSQL, MongoDB</li>
+                  <li>DevOps: Docker,Git</li>
+                </ul>
+              </div>
+
+              <div className="mb-8">
+                <h4 className="text-xl font-medium mb-4">Education</h4>
+                <div className="text-gray-300">
+                  <p className="font-medium">Bachelor of Engineering in Information Science and Engineering</p>
+                  <p>Nitte Meenakshi Institute of Technology</p>
+                  <p>2021-2025</p>
+                </div>
+              </div>
+
+              <div className="mt-8 flex justify-center">
+                <a
+                  href="https://github.com/Samisha68/Resume/blob/main/Resume_SDE.pdf"
+                  download
+                  className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-[#00fff7] to-[#00ff95] text-black font-medium rounded hover:opacity-90 transition-opacity"
+                >
+                  <Download size={20} />
+                  <span>Download PDF</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Footer */}
+      <footer className="py-8 border-t border-[#1e2a4a]">
+        <div className="max-w-6xl mx-auto px-6 text-center text-gray-400">
+          <p>© {new Date().getFullYear()} Built with Passion by Samisha. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Portfolio;
