@@ -290,7 +290,7 @@ const Portfolio = () => {
                   <span>View Code</span>
                 </a>
                 <a
-                  href=""
+                  href="https://energypro.vercel.app"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
@@ -341,15 +341,7 @@ const Portfolio = () => {
                   <Github size={16} />
                   <span>View Code</span>
                 </a>
-                <a
-                  href="https://github.com/Samisha68/PayPro"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
-                >
-                  <ExternalLink size={16} />
-                  <span>Live Demo</span>
-                </a>
+
               </div>
             </div><div className="group p-8 bg-[#1e2a4a] rounded-lg border border-[#2a3a6a] hover:border-[#00fff7] transition-all">
               <h3 className="text-xl font-medium mb-4 group-hover:text-[#00fff7] transition-colors">University Website🎓 </h3>
