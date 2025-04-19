@@ -290,7 +290,7 @@ const Portfolio = () => {
                   <span>View Code</span>
                 </a>
                 <a
-                  href=""
+                  href="https://energypro-app.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
@@ -342,7 +342,7 @@ const Portfolio = () => {
                   <span>View Code</span>
                 </a>
                 <a
-                  href="https://github.com/Samisha68/PayPro"
+                  href="https://paypro-app.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
@@ -351,7 +351,8 @@ const Portfolio = () => {
                   <span>Live Demo</span>
                 </a>
               </div>
-            </div><div className="group p-8 bg-[#1e2a4a] rounded-lg border border-[#2a3a6a] hover:border-[#00fff7] transition-all">
+            </div>
+            <div className="group p-8 bg-[#1e2a4a] rounded-lg border border-[#2a3a6a] hover:border-[#00fff7] transition-all">
               <h3 className="text-xl font-medium mb-4 group-hover:text-[#00fff7] transition-colors">University Website🎓 </h3>
               <p className="text-gray-300 mb-6 leading-relaxed">
               Designed and developed a comprehensive university website using HTML and CSS, focusing on user-friendly interfaces for students, faculty, and administrators. The project emphasized usability and aesthetics, delivering a visually appealing and fully functional dashboard that caters to diverse user needs.
@@ -368,6 +369,87 @@ const Portfolio = () => {
                 </a>
                 <a
                   href="https://university-website-nmit.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
+                >
+                  <ExternalLink size={16} />
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+            {/* --- NEW PROJECT: driftui --- */}
+            <div className="group p-8 bg-[#1e2a4a] rounded-lg border border-[#2a3a6a] hover:border-[#00fff7] transition-all">
+              <h3 className="text-xl font-medium mb-4 group-hover:text-[#00fff7] transition-colors">Drift UI 📈</h3>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                A feature-rich frontend built with Next.js and TailwindCSS simulating a perpetuals trading dashboard experience on Solana using the Drift SDK. View subaccounts, balances, positions, and orders.
+              </p>
+              <div className="flex items-center space-x-4">
+                <a
+                  href="https://github.com/Samisha68/driftui" // Assuming repo name
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
+                >
+                  <Github size={16} />
+                  <span>View Code</span>
+                </a>
+                <a
+                  href="https://driftdeck.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
+                >
+                  <ExternalLink size={16} />
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+            {/* --- NEW PROJECT: Aptos Automation Workflow --- */}
+            <div className="group p-8 bg-[#1e2a4a] rounded-lg border border-[#2a3a6a] hover:border-[#00fff7] transition-all">
+              <h3 className="text-xl font-medium mb-4 group-hover:text-[#00fff7] transition-colors">Aptos Automation Workflow 🤖</h3>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                Leverages AI to revolutionize Aptos blockchain workflow management. Features AI-driven creation, smart execution, adaptive analysis, and predictive recommendations for optimizing tasks.
+              </p>
+              <div className="flex items-center space-x-4">
+                <a
+                  href="https://github.com/Samisha68/aptos-automation-workflow" // Assuming repo name
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
+                >
+                  <Github size={16} />
+                  <span>View Code</span>
+                </a>
+                <a
+                  href="https://aptos-workflow-automation.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
+                >
+                  <ExternalLink size={16} />
+                  <span>Live Demo</span>
+                </a>
+              </div>
+            </div>
+            {/* --- NEW PROJECT: Hospital Bed Management --- */}
+            <div className="group p-8 bg-[#1e2a4a] rounded-lg border border-[#2a3a6a] hover:border-[#00fff7] transition-all">
+              <h3 className="text-xl font-medium mb-4 group-hover:text-[#00fff7] transition-colors">Hospital Bed Management 🏥</h3>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                SwiftBed: Streamlines hospital bed utilization with real-time tracking of availability, patient assignments, and ward management. Features patient tracking, ward organization, and secure auth.
+              </p>
+              <div className="flex items-center space-x-4">
+                <a
+                  href="https://github.com/Samisha68/Hospital-bed-management" // Assuming repo name
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
+                >
+                  <Github size={16} />
+                  <span>View Code</span>
+                </a>
+                <a
+                  href="https://swiftbed.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2 text-sm text-gray-400 hover:text-[#00fff7] transition-colors"
