@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Modern Developer Portfolio
 
-## Getting Started
+A sleek, animated developer portfolio built with Next.js, React, and Tailwind CSS. Features a dynamic UI with smooth animations, interactive components, and a professional design.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- **Modern Design**: Clean and professional interface with gradient accents
+- **Responsive Layout**: Fully responsive design that works on all devices
+- **Smooth Animations**: Custom animations including typing effects and dynamic transitions
+- **Interactive Components**: Reusable UI components with hover effects
+- **Dark Theme**: Eye-friendly dark mode with cyan accents
+- **Performance Optimized**: Built with performance best practices
+
+## 🚀 Tech Stack
+
+- [Next.js 14](https://nextjs.org/) - React Framework
+- [React](https://reactjs.org/) - UI Library
+- [Tailwind CSS](https://tailwindcss.com/) - CSS Framework
+- [Lucide Icons](https://lucide.dev/) - Icon Library
+- [Class Variance Authority](https://cva.style/) - Component Variants
+- [Radix UI](https://www.radix-ui.com/) - Headless UI Components
+
+## 🛠️ Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Samisha/portfolio.git
+   ```
+
+2. Install dependencies:
+   ```bash
+   cd portfolio
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## 📦 Project Structure
+
+```
+portfolio/
+├── app/
+│   ├── page.tsx
+│   ├── layout.tsx
+│   └── globals.css
+├── lib/
+│   └── utils.ts
+└── public/
+    └── assets/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔧 Customization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Colors
+Main theme colors are defined in `tailwind.config.js`:
+```js
+colors: {
+  primary: {
+    cyan: "#00fff7",
+    green: "#00ff95",
+  },
+  dark: {
+    DEFAULT: "#0a1020",
+    card: "#1e2a4a",
+    border: "#2a3a6a",
+  }
+}
+```
 
-## Learn More
+### Animations
+Custom animations can be modified in the respective component files using Tailwind CSS classes or CSS modules.
 
-To learn more about Next.js, take a look at the following resources:
+## 📱 Responsive Design
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The portfolio is fully responsive with breakpoints:
+- Mobile: < 640px
+- Tablet: 640px - 1024px
+- Desktop: > 1024px
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## 🤝 Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🙏 Acknowledgments
+
+- [Tailwind CSS](https://tailwindcss.com)
+- [shadcn/ui](https://ui.shadcn.com)
+- [Lucide Icons](https://lucide.dev)
+- [Next.js](https://nextjs.org)
