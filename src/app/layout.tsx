@@ -15,16 +15,16 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Samisha - Developer",
-  description: "Full Stack Developer specializing in backend, blockchain, and smart contract development. Building innovative decentralized applications and web solutions.",
+  description: "Full Stack Developer diving deep into Solana and Rust. Crafting innovative decentralized applications and pushing the boundaries of web3 development.",
   openGraph: {
     title: "Samisha - Developer",
-    description: "Full Stack Developer specializing in backend, blockchain, and smart contract development.",
+    description: "Full Stack Developer diving deep into Solana and Rust. Crafting innovative decentralized applications.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Samisha - Developer",
-    description: "Full Stack Developer specializing in backend, blockchain, and smart contract development.",
+    description: "Full Stack Developer diving deep into Solana and Rust. Crafting innovative decentralized applications.",
   },
 };
 
