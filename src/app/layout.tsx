@@ -14,9 +14,9 @@ const geistMono = localFont({
 });
 
 const siteUrl = "https://portfolio-samisha.vercel.app";
-const title = "Samisha — Developer";
+const title = "Samisha — Solana Developer & Builder of Float";
 const description =
-  "Developer building on Solana. Lead Developer at EVORA, working on smart contracts, wallets, and Solana integrations. Contributor to Solana open-source tooling.";
+  "Solana developer building Float, programmable credit infrastructure for on-chain services. Lead Developer at EVORA and contributor to Solana open-source tooling.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

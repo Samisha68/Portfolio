@@ -4,13 +4,13 @@ import { SectionHeading } from "./section-heading";
 
 export function Experience() {
   return (
-    <section id="work" className="max-w-column mx-auto px-6 py-20 border-t border-line">
+    <section id="work" className="max-w-column mx-auto px-6 py-14 border-t border-line">
       <SectionHeading title="Work" />
 
       <div className="divide-y divide-line">
         {experience.map((job, i) => (
           <Reveal key={`${job.role}-${job.period}`} delay={i * 0.05}>
-            <article className="py-7 first:pt-0 last:pb-0 sm:grid sm:grid-cols-[9.5rem_1fr] sm:gap-6">
+            <article className="py-6 sm:grid sm:grid-cols-[9.5rem_1fr] sm:gap-6">
               <p className="font-mono text-[13px] text-tertiary pt-0.5 mb-2 sm:mb-0">
                 {job.current && (
                   <span

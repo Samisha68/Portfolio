@@ -26,6 +26,10 @@ const config: Config = {
       },
       maxWidth: {
         column: "44rem",
+        wide: "62rem",
+      },
+      boxShadow: {
+        card: "0 12px 32px rgba(14, 31, 23, 0.07)",
       },
     },
   },

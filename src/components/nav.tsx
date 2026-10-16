@@ -60,29 +60,34 @@ export function Nav() {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 bg-bg/85 backdrop-blur-sm transition-shadow duration-300 ${
-        scrolled ? "border-b border-line" : "border-b border-transparent"
-      }`}
-    >
-      <nav className="max-w-column mx-auto px-6 h-14 flex items-center justify-between gap-3">
+    <>
+      <header
+        className={`fixed top-0 inset-x-0 z-50 bg-bg/90 backdrop-blur-xl transition-shadow duration-300 md:bottom-0 md:right-auto md:w-60 md:border-r md:border-line ${
+          scrolled ? "border-b border-line" : "border-b border-transparent md:border-b-0"
+        }`}
+      >
+        <nav className="mx-auto flex h-16 max-w-wide items-center justify-between gap-3 px-6 md:h-full md:flex-col md:items-stretch md:justify-start md:px-7 md:py-10">
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="text-sm font-medium text-primary hover:text-accent transition-colors shrink-0"
+          className="shrink-0 text-left text-sm font-semibold text-primary transition-colors hover:text-accent md:text-base"
           aria-label="Scroll to top"
         >
           Samisha
         </button>
 
-        <div className="flex items-center gap-3 sm:gap-5 min-w-0">
+        <div className="flex min-w-0 items-center gap-3 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-5 md:mt-12 md:flex-col md:items-stretch md:gap-1 md:overflow-visible">
           {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
-              className={`text-[13px] whitespace-nowrap transition-colors underline-offset-[6px] decoration-line-strong ${
-                active === item.id
-                  ? "text-primary underline"
-                  : "text-secondary hover:text-primary"
+              className={`whitespace-nowrap text-[13px] transition-colors md:rounded-md md:px-3 md:py-2.5 ${
+                item.id === "contact"
+                  ? active === item.id
+                    ? "rounded-full bg-primary px-3 py-1.5 text-bg md:rounded-md"
+                    : "rounded-full border border-line-strong px-3 py-1.5 text-primary hover:border-primary md:rounded-md md:border-transparent md:hover:bg-surface"
+                  : active === item.id
+                    ? "text-primary underline underline-offset-[6px] decoration-line-strong md:bg-surface md:no-underline"
+                    : "text-secondary hover:text-primary md:hover:bg-surface"
               }`}
             >
               <span className="sm:hidden">{item.short}</span>
@@ -90,7 +95,13 @@ export function Nav() {
             </a>
           ))}
         </div>
-      </nav>
-    </header>
+        </nav>
+      </header>
+
+      <p className="fixed right-6 top-6 z-40 hidden font-mono text-[11px] text-tertiary md:block">
+        press <kbd className="text-secondary">w</kbd> · <kbd className="text-secondary">p</kbd> ·{" "}
+        <kbd className="text-secondary">c</kbd> to jump around
+      </p>
+    </>
   );
 }

@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --bg: #fcfcfa;
-  --surface: #f5f5f2;
+  --bg: #fafbf8;
+  --surface: #f1f3ee;
   --border: rgba(0, 0, 0, 0.08);
   --border-strong: rgba(0, 0, 0, 0.18);
   --text-primary: #1a1a1a;
   --text-secondary: #6e6e6b;
   --text-tertiary: #71716c;
-  --accent: #0e7b52;
+  --accent: #087a50;
 }
 
 html {
@@ -26,6 +26,7 @@ body {
   font-feature-settings: "cv11", "ss01";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  background-image: radial-gradient(circle at 15% 0%, rgba(24, 160, 104, 0.06), transparent 28rem);
 }
 
 ::selection {

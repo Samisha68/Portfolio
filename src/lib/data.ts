@@ -4,10 +4,10 @@ export const siteConfig = {
   github: "https://github.com/Samisha68",
   telegram: "https://t.me/Samisha068",
   superteam: "https://superteam.fun",
-  identity: "Developer, building on Solana.",
+  monkeDao: "https://monkedao.io",
   tags: "Solana · TypeScript · Rust · Anchor",
   intro:
-    "I've been building on Solana since 2023 — energy platforms, trading dashboards, and mobile dApps. Currently I lead development at EVORA, responsible for the platform's Web3 architecture and infrastructure.",
+    "I've been building on Solana since 2023 — from energy platforms and trading dashboards to mobile dApps. I'm currently building Float and leading Web3 development at EVORA.",
 };
 
 export type Experience = {
@@ -56,6 +56,8 @@ export type PullRequest = {
   additions: number;
   deletions: number;
   language: string;
+  status: "merged" | "open" | "closed";
+  statusLabel: string;
 };
 
 export const pullRequests: PullRequest[] = [
@@ -69,6 +71,8 @@ export const pullRequests: PullRequest[] = [
     additions: 2,
     deletions: 0,
     language: "TypeScript",
+    status: "closed",
+    statusLabel: "Closed",
   },
   {
     repo: "solana-rpc/superbank",
@@ -80,6 +84,8 @@ export const pullRequests: PullRequest[] = [
     additions: 126,
     deletions: 51,
     language: "Rust",
+    status: "merged",
+    statusLabel: "Merged Jul 2026",
   },
   {
     repo: "solana-foundation/explorer",
@@ -91,6 +97,8 @@ export const pullRequests: PullRequest[] = [
     additions: 50,
     deletions: 8,
     language: "TypeScript",
+    status: "open",
+    statusLabel: "Open",
   },
 ];
 
@@ -101,9 +109,19 @@ export type Project = {
   live?: string;
   github?: string;
   year: string;
+  current?: boolean;
 };
 
 export const projects: Project[] = [
+  {
+    name: "Float",
+    description:
+      "Programmable credit infrastructure for Solana. Float is plug-and-play programmable credit for on-chain services, giving apps a reusable credit layer without rebuilding lending infrastructure from scratch.",
+    meta: "Solana · Anchor · programmable credit",
+    live: "https://justfloat.xyz",
+    year: "2026",
+    current: true,
+  },
   {
     name: "Wakeup",
     description:
@@ -155,37 +173,6 @@ export const projects: Project[] = [
     meta: "Python · Solana API · Telegram",
     github: "https://github.com/Samisha68/CryptoCustodian",
     year: "2024",
-  },
-];
-
-export type Hackathon = {
-  name: string;
-  event: string;
-  description: string;
-  github: string;
-};
-
-export const hackathons: Hackathon[] = [
-  {
-    name: "Float",
-    event: "MONOLITH Solana Mobile Hackathon · Mar 2026",
-    description:
-      "Micro-lending on Solana with two modes: classic collateralized installment loans, and an AI agent matching small short-term loans from a shared pool.",
-    github: "https://github.com/Samisha68/float-app",
-  },
-  {
-    name: "Coin Rush",
-    event: "x402 Solana Hackathon · Nov 2025",
-    description:
-      "A Solana knowledge quiz where unlocking explanations costs an x402 micropayment — RAG-generated questions, XP, and topic mastery.",
-    github: "https://github.com/Samisha68/x402-solana-hackathon",
-  },
-  {
-    name: "WhaleVybes",
-    event: "Built for Vybe Network · 2025",
-    description:
-      "A Telegram bot for tracking Solana wallets by nickname — holdings, transfers, token authorities, and decoded instructions.",
-    github: "https://github.com/Samisha68/WhaleVybes",
   },
 ];
 

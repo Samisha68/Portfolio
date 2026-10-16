@@ -21,15 +21,15 @@ const links = [
 
 export function Hero() {
   return (
-    <section id="home" className="max-w-column mx-auto px-6 pt-32 sm:pt-40 pb-20">
+    <section id="home" className="max-w-column mx-auto px-6 pt-28 pb-16 sm:pt-32 md:pt-20">
       <motion.div custom={0} initial="hidden" animate="show" variants={fade}>
         <Image
           src="/avatar.jpg"
           alt="Samisha's avatar — a pixel-art monkey with a red bow"
-          width={56}
-          height={56}
+          width={64}
+          height={64}
           priority
-          className="rounded-xl border border-line transition-transform duration-300 hover:-rotate-3"
+          className="rounded-2xl border border-line shadow-card transition-transform duration-300 hover:-rotate-3"
         />
       </motion.div>
 
@@ -38,7 +38,7 @@ export function Hero() {
         initial="hidden"
         animate="show"
         variants={fade}
-        className="mt-8 text-[2.5rem] leading-tight font-semibold tracking-tight text-primary"
+        className="mt-8 text-[3rem] leading-none font-semibold tracking-[-0.05em] text-primary sm:text-[3.5rem]"
       >
         {siteConfig.name}
       </motion.h1>
@@ -48,17 +48,7 @@ export function Hero() {
         initial="hidden"
         animate="show"
         variants={fade}
-        className="mt-1 text-lg text-secondary"
-      >
-        {siteConfig.identity}
-      </motion.p>
-
-      <motion.p
-        custom={2}
-        initial="hidden"
-        animate="show"
-        variants={fade}
-        className="mt-3 font-mono text-[13px] text-tertiary"
+        className="mt-6 font-mono text-[13px] text-tertiary"
       >
         {siteConfig.tags}
       </motion.p>
@@ -68,9 +58,19 @@ export function Hero() {
         initial="hidden"
         animate="show"
         variants={fade}
-        className="mt-6 text-[17px] text-secondary leading-[1.7] max-w-[62ch]"
+        className="mt-8 max-w-[54ch] text-[16px] leading-7 text-secondary"
       >
-        {siteConfig.intro} Member of{" "}
+        {siteConfig.intro}
+      </motion.p>
+
+      <motion.p
+        custom={4}
+        initial="hidden"
+        animate="show"
+        variants={fade}
+        className="mt-5 text-[15px] leading-7 text-secondary"
+      >
+        Member of{" "}
         <a
           href={siteConfig.superteam}
           target="_blank"
@@ -79,15 +79,24 @@ export function Hero() {
         >
           Superteam
         </a>
+        {" "}and{" "}
+        <a
+          href={siteConfig.monkeDao}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary underline underline-offset-[5px] decoration-line-strong hover:text-accent hover:decoration-accent transition-colors"
+        >
+          MonkeDAO
+        </a>
         .
       </motion.p>
 
       <motion.ul
-        custom={4}
+        custom={5}
         initial="hidden"
         animate="show"
         variants={fade}
-        className="mt-8 flex items-center gap-6"
+        className="mt-8 flex items-center gap-7"
       >
         {links.map((link) => (
           <li key={link.label}>

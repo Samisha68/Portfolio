@@ -7,7 +7,7 @@ type SectionHeadingProps = {
 
 export function SectionHeading({ title, description }: SectionHeadingProps) {
   return (
-    <Reveal className="mb-10">
+    <Reveal className="mb-8">
       <h2 className="text-xl font-medium tracking-tight text-primary">{title}</h2>
       {description && (
         <p className="mt-2 text-secondary leading-relaxed">{description}</p>
